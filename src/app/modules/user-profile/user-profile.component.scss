@@ -1,0 +1,21 @@
+.notifications {
+  width: 32px;
+  height: 32px;
+  border: none;
+  img {
+    width: inherit;
+    height: inherit;
+    margin-top: 3px;
+  }
+}
+
+.profile {
+  width: 36px;
+  height: 36px;
+  border: none;
+  img {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+  }
+}

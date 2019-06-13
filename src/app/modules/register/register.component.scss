@@ -1,0 +1,70 @@
+.phone-image {
+  max-width: 490.5px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.store-image {
+  width: 100%;
+  height: auto;
+  max-width: 135.5px;
+  object-fit: contain;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #33cc33;
+  border-radius: 50%;
+  position: relative;
+
+  .circle__line.tip {
+    width: 26px;
+    border: 1px solid #000000;
+    position: absolute;
+    z-index: 2;
+    right: -10px;
+    top: 30%;
+    transform: rotate(-48deg);
+  }
+
+  .circle__line.bottom {
+    width: 10px;
+    border: 1px solid #000000;
+    position: absolute;
+    transform: rotate(50deg);
+    top: 15px;
+    right: 10px;
+  }
+}
+
+.check-box-label {
+  font-size: 14px;
+}
+
+.mrkt-footer {
+  margin-top: 150px;
+}
+
+.dropbtn {
+  &.menu {
+    border-radius: 21.3px;
+    border: solid 0.5px #f5f5f5;
+    background-color: #ffffff;
+    height: 42.5px;
+    width: 70px;
+    img {
+      width: 13px;
+      height: 12px;
+      object-fit: contain;
+    }
+  }
+  &.languages {
+    width: 93.5px;
+    height: 15.3px;
+    color: #CBCBCB;
+    border: none !important;
+    background: transparent;
+  }
+}
