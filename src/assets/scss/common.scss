@@ -32,6 +32,15 @@ $sides: (top, bottom, left, right);
   float: left;
 }
 
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .align-middle {
   position: absolute;
   right: 50%;

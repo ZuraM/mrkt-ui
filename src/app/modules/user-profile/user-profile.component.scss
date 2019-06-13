@@ -2,6 +2,7 @@
   width: 32px;
   height: 32px;
   border: none;
+
   img {
     width: inherit;
     height: inherit;
@@ -13,9 +14,72 @@
   width: 36px;
   height: 36px;
   border: none;
+
   img {
     width: inherit;
     height: inherit;
     border-radius: 50%;
+  }
+}
+
+.user-icon {
+  width: 109px;
+  height: 109px;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  background-color: #F0F0F0;
+  padding: 10px;
+  border-radius: 16.3px;
+  width: 230px;
+  height: 32.5px;
+}
+
+.finance-info-btn {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border: solid 0.5px #cccccc;
+  border-radius: 16.3px;
+  width: 230px;
+  height: 32.5px;
+}
+
+.approved {
+  color: #1173f6;
+  font-weight: 600;
+}
+
+.user-info-form {
+  .form-group {
+    border-bottom: 1px solid silver;
+    padding: 10px 0;
+    margin-bottom: 35px;
+
+    input {
+      border: none;
+      float: right;
+      padding: 3px;
+      text-align: right;
+      width: 70%;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .save-btn {
+    float: right;
+    width: 170px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    &:focus {
+      outline: none;
+    }
   }
 }
