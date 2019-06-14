@@ -29,8 +29,6 @@ export class AuthService {
   checkAccessToken(): boolean {
     const accessToken = window.localStorage.getItem('access_token');
 
-    console.log(accessToken);
-
     const jwtHelper = new JwtHelperService();
 
     if (!accessToken || accessToken === 'undefined') {
@@ -38,7 +36,6 @@ export class AuthService {
     }
 
     if (jwtHelper.isTokenExpired(accessToken)) {
-      console.log(123455);
       this.store.dispatch(new fromAuthActions.Logout());
     }
 
