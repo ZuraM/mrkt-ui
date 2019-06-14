@@ -18,9 +18,9 @@ body {
   flex-wrap: wrap;
   position: relative;
 
-  &>* {
+  /* &>* {
     padding: 14px 16px;
-  }
+  } */
 
 
   &.navbar__alt {
@@ -29,10 +29,12 @@ body {
       margin: 0;
       padding: 0;
       overflow: hidden;
+      width: 100%;
 
       li {
         float: unset;
         display: flex;
+        padding: 28px 12px 5px 30px;
 
         img {
           width: 16px;
@@ -44,8 +46,9 @@ body {
           display: block;
           color: black;
           text-align: left;
-          padding: 9px 16px;
+          padding: 0;
           text-decoration: none;
+          width: 100%;
 
           &:hover:not(.active) {
             background-color: transparent;
@@ -109,8 +112,8 @@ body {
   }
 }
 
-form {
-  width: 100%;
+.mrkt-form {
+  width: 80%;
 
   .input-group {
     margin-bottom: 15px;
@@ -124,7 +127,6 @@ form {
       height: 55px;
       border: solid 0.5px rgba(0, 0, 0, 0.2);
       background-color: #ffffff;
-      width: 80%;
 
       &::placeholder {
         padding-left: 15px;
@@ -140,7 +142,6 @@ form {
     text-align: center;
     font-size: 13px;
     margin: 32px 0 26px 0;
-    width: 80%;
 
     &:before {
       content: '';

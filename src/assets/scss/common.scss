@@ -41,6 +41,10 @@ $sides: (top, bottom, left, right);
   flex-wrap: wrap;
 }
 
+.j-center {
+  justify-content: center;
+}
+
 .align-middle {
   position: absolute;
   right: 50%;
@@ -49,6 +53,10 @@ $sides: (top, bottom, left, right);
 .align-right {
   position: absolute;
   right: 0;
+}
+
+.push-center {
+  margin: 0 auto;
 }
 
 .text-center {
