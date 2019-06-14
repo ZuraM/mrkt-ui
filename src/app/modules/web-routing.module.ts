@@ -11,6 +11,11 @@ export const webRouting: ModuleWithProviders = RouterModule.forChild([
     component: WebComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'register',
+        pathMatch: 'full'
+      },
+      {
         path: 'register',
         component: RegisterComponent
       },

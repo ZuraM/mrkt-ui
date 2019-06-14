@@ -88,48 +88,106 @@
             <p class="fs-13 m-b-40">Searching for better ways to sell your products? Join us today.</p>
           </div>
           <div class="col-12">
-            <form class="mrkt-form">
+            <form class="mrkt-form" [formGroup]="registerForm">
               <div class="input-group col-12">
-                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Email" formControlName="email">
+                <ng-container
+                  *ngIf="registerForm.controls.email.errors && (registerForm.controls.email.dirty || registerForm.controls.email.touched)">
+                  <span validationError *ngIf="registerForm.controls.email.hasError('required')">
+                    Required Field
+                  </span>
+                  <span validationError *ngIf="registerForm.controls.email.hasError('email')">
+                    Incorrect Format. Should Be xxxx@xx.xxx
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" formControlName="password">
+                <ng-container
+                  *ngIf="registerForm.controls.password.errors && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+                  <span validationError *ngIf="registerForm.controls.password.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="password" placeholder="Repeat Password">
+                <input type="password" placeholder="Repeat Password" formControlName="confirmPassword">
               </div>
 
               <span class="form-legend">General Information</span>
 
               <div class="input-group col-12">
-                <input type="text" placeholder="Full Name">
+                <input type="text" placeholder="Full Name" formControlName="fullName">
+                <ng-container
+                  *ngIf="registerForm.controls.fullName.errors && (registerForm.controls.fullName.dirty || registerForm.controls.fullName.touched)">
+                  <span validationError *ngIf="registerForm.controls.fullName.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="text" placeholder="Company Name">
+                <input type="text" placeholder="Company Name" formControlName="companyName">
+                <ng-container
+                  *ngIf="registerForm.controls.companyName.errors && (registerForm.controls.companyName.dirty || registerForm.controls.companyName.touched)">
+                  <span validationError *ngIf="registerForm.controls.companyName.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="text" placeholder="Your Position">
+                <input type="text" placeholder="Your Position" formControlName="position">
+                <ng-container
+                  *ngIf="registerForm.controls.position.errors && (registerForm.controls.position.dirty || registerForm.controls.position.touched)">
+                  <span validationError *ngIf="registerForm.controls.position.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="text" placeholder="Choose City">
+                <select formControlName="city" placeholder="Choose City">
+                  <option value="" disabled selected>Choose City</option>
+                  <option value="Tbilisi">Tbilisi</option>
+                  <option value="Rustavi">Rustavi</option>
+                  <option value="Kutaisi">Kutaisi</option>
+                  <option value="Batumi">Batumi</option>
+                </select>
+                <ng-container
+                  *ngIf="registerForm.controls.city.errors && (registerForm.controls.city.dirty || registerForm.controls.city.touched)">
+                  <span validationError *ngIf="registerForm.controls.city.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
 
               <span class="form-legend">Contact Information</span>
 
               <div class="input-group col-12">
-                <input type="text" placeholder="Business Phone">
+                <input type="text" placeholder="Business Phone" formControlName="bussinessPhone">
+                <ng-container
+                  *ngIf="registerForm.controls.bussinessPhone.errors && (registerForm.controls.bussinessPhone.dirty || registerForm.controls.bussinessPhone.touched)">
+                  <span validationError *ngIf="registerForm.controls.bussinessPhone.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
               <div class="input-group col-12">
-                <input type="text" placeholder="Business Mail">
+                <input type="text" placeholder="Business Mail" formControlName="bussinessMail">
+                <ng-container
+                  *ngIf="registerForm.controls.bussinessMail.errors && (registerForm.controls.bussinessMail.dirty || registerForm.controls.bussinessMail.touched)">
+                  <span validationError *ngIf="registerForm.controls.bussinessMail.hasError('required')">
+                    Required Field
+                  </span>
+                </ng-container>
               </div>
 
               <label class="mrkt-checkbox m-t-36">By creating a mrkt account, you’are agreeing to accept our terms of
                 services
-                <input type="checkbox" checked="checked">
+                <input type="checkbox" formControlName="terms">
                 <span class="checkmark"></span>
               </label>
 
-              <button type="submit" class="btn btn-primary btn-md m-t-41">Register</button>
+              <button type="submit" class="btn btn-primary btn-md m-t-41" (click)="onSubmitRegister()"
+                [disabled]="registerForm.invalid">Register</button>
             </form>
           </div>
         </div>
