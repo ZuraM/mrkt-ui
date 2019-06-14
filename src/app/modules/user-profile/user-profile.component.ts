@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as appStore from '../../store/app.reducers';
 
 @Component({
   selector: 'mrkt-user-profile',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store<appStore.AppState>
+  ) { }
 
   ngOnInit() {
   }
