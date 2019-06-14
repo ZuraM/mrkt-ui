@@ -112,6 +112,15 @@
               </div>
               <div class="input-group col-12">
                 <input type="password" placeholder="Repeat Password" formControlName="confirmPassword">
+                <ng-container
+                  *ngIf="registerForm.controls.confirmPassword.errors && (registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched)">
+                  <span validationError *ngIf="registerForm.controls.confirmPassword.hasError('required')">
+                    Required Field
+                  </span>
+                  <span validationError *ngIf="registerForm.controls.confirmPassword.hasError('mustMatch')">
+                    Passwords Must Match
+                  </span>
+                </ng-container>
               </div>
 
               <span class="form-legend">General Information</span>
@@ -176,6 +185,9 @@
                   *ngIf="registerForm.controls.bussinessMail.errors && (registerForm.controls.bussinessMail.dirty || registerForm.controls.bussinessMail.touched)">
                   <span validationError *ngIf="registerForm.controls.bussinessMail.hasError('required')">
                     Required Field
+                  </span>
+                  <span validationError *ngIf="registerForm.controls.bussinessMail.hasError('email')">
+                    Incorrect Format. Should Be xxxx@xx.xxx
                   </span>
                 </ng-container>
               </div>
