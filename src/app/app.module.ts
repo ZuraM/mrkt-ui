@@ -11,7 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from 'src/environments/environment';
 import { AuthEffects } from './store/auth/auth.effects';
 import { appReducers } from './store/app.reducers';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './shared/auth.guard';
+import { AuthInterceptor } from './shared/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forRoot([AuthEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

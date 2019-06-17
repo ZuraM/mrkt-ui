@@ -20,7 +20,7 @@ export const webRouting: ModuleWithProviders = RouterModule.forChild([
         component: RegisterComponent
       },
       {
-        path: 'user-profile',
+        path: 'user-profile/:id',
         component: UserProfileComponent,
         canActivate: [AuthGuard]
       }

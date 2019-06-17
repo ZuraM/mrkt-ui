@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import * as authActions from './auth.actions';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private httpClient: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   @Effect({
@@ -33,10 +35,21 @@ export class AuthEffects {
   @Effect({
     dispatch: false
   })
+  actionFail$ = this.actions$.pipe(
+    ofType(authActions.ActionTypes.ACTION_FAIL),
+    map((action: authActions.ActionFail) => {
+      console.error(action.payload);
+    })
+  );
+
+  @Effect({
+    dispatch: false
+  })
   setToken$ = this.actions$.pipe(
     ofType(authActions.ActionTypes.SET_TOKEN),
     map((action: authActions.SetToken) => {
-      this.authService.setToken(action.payload);
+      this.authService.setToken(action.payload.token);
+      this.router.navigate(['user-profile', action.payload.user['_id']]);
     })
   );
 
@@ -49,7 +62,7 @@ export class AuthEffects {
         .pipe(
           switchMap((userInfo: any) => [
             new authActions.LoginSuccess(userInfo.data),
-            new authActions.SetToken(userInfo.data.token)
+            new authActions.SetToken(userInfo.data)
           ]),
           catchError(error => of(new authActions.ActionFail(error)))
         );
@@ -63,10 +76,25 @@ export class AuthEffects {
       return this.httpClient
         .post(`${environment.apiUrl}/auth/add`, action.payload)
         .pipe(
-          switchMap(userInfo => [
+          switchMap((userInfo: any) => [
             new authActions.AddUserSuccess(),
             new authActions.Login(action.payload.email, action.payload.password)
           ]),
+          catchError(error => of(new authActions.ActionFail(error)))
+        );
+    })
+  );
+
+  @Effect()
+  userInfo$ = this.actions$.pipe(
+    ofType(authActions.ActionTypes.SET_USER_INFO),
+    switchMap((action: authActions.SetUserInfo) => {
+      return this.httpClient
+        .get(`${environment.apiUrl}/user/${action.payload}`)
+        .pipe(
+          map((userInfo: any) => {
+            return new authActions.SetUserInfoSuccess(userInfo.data);
+          }),
           catchError(error => of(new authActions.ActionFail(error)))
         );
     })

@@ -24,8 +24,17 @@ export function authReducer(
       return {
         ...state,
         authenticated: true,
-        token: action.payload.token,
-        userInfo: action.payload.user
+        token: action.payload.token
+      };
+    case authActions.ActionTypes.SET_USER_INFO_SUCCESS:
+      const userInfo = action.payload;
+      const fullName = userInfo.fullName.split(' ');
+      userInfo['firstName'] = fullName[0];
+      userInfo['lastName'] = fullName[1];
+      return {
+        ...state,
+        authenticated: true,
+        userInfo
       };
     case authActions.ActionTypes.ACTION_FAIL:
       return {
